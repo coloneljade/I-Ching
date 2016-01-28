@@ -1,14 +1,14 @@
 def main():
-    resp = input("Do you wish to consult the I Ching?")
-    if resp in {'no', 'n', 'not really', 'exit', 'nah'}:
+    resp = input("Do you wish to consult the I Ching?\n")
+    if resp in {'no', 'n', 'not really', 'exit', 'nah', 'narp'}:
         return None
 
-    while(resp not in {'no', 'n', 'not really', 'exit', 'nah'}):
-        name = input("What is your name, seeker of wisdom?")
+    while(resp not in {'no', 'n', 'not really', 'exit', 'nah', 'narp'}):
+        name = input("What is your name, seeker of wisdom?\n")
         _ = Hexagram()
         _.cast()
         print("{} you have thrown:".format(name))
         _.get_hexagram()
-        resp = input("Do you wish to consult the I Ching again?")
+        resp = input("Do you wish to consult the I Ching again?\n")
         
 main()
