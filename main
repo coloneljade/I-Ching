@@ -9,6 +9,6 @@ def main():
         _.cast()
         print("{} you have thrown:".format(name))
         _.get_hexagram()
-        resp = input("Do you wish to consult the I Ching again?\n")
+        resp = input("Do you wish to consult the I Ching again at this time?\n")
         
 main()
