@@ -1,0 +1,66 @@
+"""
+A simple program which returns an I-Ching hexagram number in the Wen ordering. It assigns probabilities in the
+same way as yarrow stalks.
+
+"""
+
+from os import urandom, linesep
+
+class Hexagram:
+    def __init__(self):
+        self.codex = codex = {0: '--x--', 1: '--o--', 2: '--o--', 3: '--o--', 4: '-----', 5: '-----',
+6: '-----', 7: '-----', 8: '-----', 9: '-- --', 10: '-- --', 11: '-- --', 12: '-- --', 13: '-- --', 14: '-- --',
+15: '-- --'}
+
+    def cast(self):
+        self.pieces = list(urandom(3))
+        self.hex1 = self.pieces[0] >> 4
+        self.hex2 = (self.pieces[0] - (self.hex1 << 4))
+        self.hex3 = self.pieces[1] >> 4
+        self.hex4 = (self.pieces[1] - (self.hex3 << 4))
+        self.hex5 = self.pieces[2] >> 4
+        self.hex6 = (self.pieces[2] - (self.hex5 << 4))
+        self.lower = [self.hex1, self.hex2, self.hex3]
+        self.upper = [self.hex4, self.hex5, self.hex6]
+    
+    def get_hexagram(self):
+        try:
+            for i in range(3)[::-1]:
+                print(self.codex[self.upper[i]])
+            for i in range(3)[::-1]:
+                print(self.codex[self.lower[i]])
+            print(linesep)
+        except AttributeError:
+            print("You must cast the Yarrow sticks!")
+
+    def get_upper(self):
+        try:
+            for i in range(3)[::-1]:
+                print(self.codex[self.upper[i]])
+            print(linesep)
+        except AttributeError:
+            print("You must cast the Yarrow sticks!")
+
+    def get_lower(self):
+        try:
+            for i in range(3)[::-1]:
+                print(self.codex[self.lower[i]])
+            print(linesep)
+        except AttributeError:
+            print("You must cast the Yarrow sticks!")
+
+
+def main():
+    resp = input("Do you wish to consult the I Ching?")
+    if resp in {'no', 'n', 'not really', 'exit', 'nah'}:
+        return None
+
+    while(resp not in {'no', 'n', 'not really', 'exit', 'nah'}):
+        name = input("What is your name, seeker of wisdom?")
+        _ = Hexagram()
+        _.cast()
+        print("{} you have thrown:".format(name))
+        _.get_hexagram()
+        resp = input("Do you wish to consult the I Ching again?")
+        
+main()
