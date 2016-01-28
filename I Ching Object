@@ -49,18 +49,3 @@ class Hexagram:
         except AttributeError:
             print("You must cast the Yarrow sticks!")
 
-
-def main():
-    resp = input("Do you wish to consult the I Ching?")
-    if resp in {'no', 'n', 'not really', 'exit', 'nah'}:
-        return None
-
-    while(resp not in {'no', 'n', 'not really', 'exit', 'nah'}):
-        name = input("What is your name, seeker of wisdom?")
-        _ = Hexagram()
-        _.cast()
-        print("{} you have thrown:".format(name))
-        _.get_hexagram()
-        resp = input("Do you wish to consult the I Ching again?")
-        
-main()
