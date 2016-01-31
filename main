@@ -4,7 +4,7 @@ def main():
         return None
 
     while(resp not in {'no', 'n', 'not really', 'exit', 'nah', 'narp'}):
-        name = input("What is your name, seeker of wisdom?\n")
+        name = input("What is your name, O seeker of wisdom?\n")
         _ = Hexagram()
         _.cast()
         print("{} you have thrown:".format(name))
